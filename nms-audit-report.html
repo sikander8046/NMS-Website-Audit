@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Audit — Northwest Mountain School</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f1923;
+  --paper: #faf8f4;
+  --cream: #f0ece3;
+  --glacier: #0b2f45;
+  --ice: #3a7fa8;
+  --ice-light: #e8f4fa;
+  --summit: #c4401a;
+  --summit-light: #fdf0ec;
+  --gold: #b8892a;
+  --gold-light: #fdf6e3;
+  --pine: #2a5c3f;
+  --pine-light: #eaf4ee;
+  --mid: #6b7a8d;
+  --rule: #e2ddd5;
+  --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  background: var(--glacier);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-mountain {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(11,47,69,0.0) 0%, rgba(11,47,69,0.6) 60%, rgba(11,47,69,1) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 900'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230d2135'/%3E%3Cstop offset='1' stop-color='%231a4a6e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23sky)' width='1440' height='900'/%3E%3Cpolygon fill='%23142d42' points='0,900 200,400 400,550 600,250 750,380 900,180 1050,320 1200,200 1440,350 1440,900'/%3E%3Cpolygon fill='%230f2236' points='0,900 150,500 350,620 550,350 700,470 900,280 1050,400 1200,300 1440,420 1440,900'/%3E%3Cpolygon fill='%23c8d8e8' opacity='0.15' points='900,180 820,260 900,240 970,260'/%3E%3Cpolygon fill='%23c8d8e8' opacity='0.1' points='600,250 540,330 610,310 660,330'/%3E%3C/svg%3E") center/cover no-repeat;
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 80px 80px 60px;
+  max-width: 1200px;
+}
+
+.cover-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cover-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--ice);
+}
+
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 900;
+  color: white;
+  line-height: 1.0;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.cover-title em {
+  font-style: italic;
+  color: rgba(255,255,255,0.5);
+  font-weight: 700;
+}
+
+.cover-subtitle {
+  font-size: 18px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  margin-bottom: 48px;
+  letter-spacing: 0.02em;
+}
+
+.cover-meta-bar {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 32px;
+  flex-wrap: wrap;
+}
+
+.cover-meta-item {
+  padding: 0 40px 0 0;
+  margin-right: 40px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+.cover-meta-item:last-child { border-right: none; }
+
+.cover-meta-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 4px;
+}
+
+.cover-meta-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.cover-grade-badge {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--summit);
+  border: 3px solid rgba(255,255,255,0.15);
+}
+
+.cover-grade-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+}
+
+.cover-grade-score {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── TOC ── */
+.toc {
+  background: var(--glacier);
+  color: white;
+  padding: 56px 80px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.toc h2 {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-bottom: 28px;
+}
+
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.toc-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  text-decoration: none;
+  color: white;
+  transition: background 0.2s;
+}
+
+.toc-item:hover { background: rgba(255,255,255,0.07); }
+
+.toc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--ice);
+  opacity: 0.7;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.toc-text {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.8);
+}
+
+/* ── SHARED ── */
+.section {
+  padding: 72px 80px;
+  border-bottom: 1px solid var(--rule);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: 72px 80px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-full .inner { max-width: 1200px; margin: 0 auto; }
+
+.section-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--summit);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-number::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--summit);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900;
+  color: var(--glacier);
+  line-height: 1.1;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.section-tagline {
+  font-size: 14px;
+  color: var(--mid);
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--rule);
+  font-style: italic;
+}
+
+/* ── SCORECARD ── */
+.scorecard-bg {
+  background: var(--cream);
+  padding: 72px 80px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.scorecard-bg .inner { max-width: 1200px; margin: 0 auto; }
+
+.score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.overall-display {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.grade-ring {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--summit);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(196,64,26,0.3);
+}
+
+.grade-ring .letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+}
+
+.grade-ring .score {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.75);
+}
+
+.overall-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--glacier);
+  margin-bottom: 4px;
+}
+
+.overall-text p {
+  font-size: 13px;
+  color: var(--mid);
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.score-card {
+  background: white;
+  border-radius: 6px;
+  padding: 18px 16px;
+  border-top: 3px solid;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.score-card.red { border-top-color: var(--summit); }
+.score-card.amber { border-top-color: #d97706; }
+.score-card.green { border-top-color: var(--pine); }
+
+.score-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mid);
+  margin-bottom: 12px;
+}
+
+.score-bar-track {
+  height: 5px;
+  background: var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.score-bar-fill.red { background: var(--summit); }
+.score-bar-fill.amber { background: #d97706; }
+.score-bar-fill.green { background: var(--pine); }
+
+.score-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ── STAT STRIP ── */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  margin-bottom: 40px;
+}
+
+.stat-cell {
+  background: white;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.stat-cell.dark { background: var(--glacier); }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 6px;
+  color: var(--glacier);
+}
+
+.stat-cell.dark .stat-num { color: white; }
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mid);
+}
+
+.stat-cell.dark .stat-label { color: rgba(255,255,255,0.5); }
+
+.stat-num.red { color: var(--summit); }
+.stat-num.green { color: var(--pine); }
+
+/* ── ISSUES ── */
+.issue {
+  border-radius: 8px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  border-left: 4px solid;
+  position: relative;
+}
+
+.issue.crit { background: var(--summit-light); border-left-color: var(--summit); }
+.issue.warn { background: var(--gold-light); border-left-color: var(--gold); }
+.issue.good { background: var(--pine-light); border-left-color: var(--pine); }
+.issue.info { background: var(--ice-light); border-left-color: var(--ice); }
+
+.issue-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.crit .issue-pill { background: var(--summit); color: white; }
+.warn .issue-pill { background: var(--gold); color: white; }
+.good .issue-pill { background: var(--pine); color: white; }
+.info .issue-pill { background: var(--ice); color: white; }
+
+.issue-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.issue-body {
+  font-size: 14px;
+  color: #4a5568;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.issue-fix {
+  background: rgba(0,0,0,0.04);
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #374151;
+  border-left: 3px solid rgba(0,0,0,0.1);
+}
+
+.issue-fix strong { color: var(--glacier); font-weight: 700; }
+
+/* ── TECHNICAL TABLE ── */
+.tech-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.tech-table th {
+  background: var(--glacier);
+  color: rgba(255,255,255,0.85);
+  padding: 12px 18px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tech-table td {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+  color: #4a5568;
+}
+
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:nth-child(even) td { background: var(--cream); }
+
+.tech-table td strong { color: var(--ink); font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.tag-fail { background: #fde8e4; color: var(--summit); }
+.tag-warn { background: #fef3c7; color: #92400e; }
+.tag-pass { background: #d1fae5; color: #065f46; }
+.tag-info { background: #dbeafe; color: #1e40af; }
+.tag-na { background: #f3f4f6; color: #6b7280; }
+
+/* ── CALENDAR CALLOUT ── */
+.calendar-box {
+  background: var(--glacier);
+  color: white;
+  border-radius: 8px;
+  padding: 36px 40px;
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.calendar-icon {
+  font-size: 72px;
+  text-align: center;
+  opacity: 0.3;
+}
+
+.calendar-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.calendar-content p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 16px;
+}
+
+.calendar-findings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cal-finding {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+}
+
+.cal-finding::before { content: '→'; color: var(--ice); flex-shrink: 0; }
+
+/* ── FLOW ── */
+.flow-steps {
+  display: flex;
+  gap: 0;
+  margin-bottom: 32px;
+  overflow-x: auto;
+}
+
+.flow-step {
+  flex: 1;
+  min-width: 150px;
+  padding: 20px 16px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-right: none;
+  position: relative;
+}
+
+.flow-step.broken {
+  background: var(--summit-light);
+  border-color: #f5c6bb;
+}
+
+.flow-step:last-child { border-right: 1px solid var(--rule); }
+
+.flow-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--summit);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.flow-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+
+.flow-desc {
+  font-size: 11px;
+  color: var(--mid);
+  line-height: 1.4;
+}
+
+/* ── PAGE GRADES ── */
+.page-grade-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.page-card {
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.page-card-head {
+  background: var(--glacier);
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-card-url {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pg-badge {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 3px 12px;
+  border-radius: 4px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.pg-f { background: var(--summit); }
+.pg-d { background: #d97706; }
+.pg-c { background: #7c3aed; }
+.pg-b { background: var(--pine); }
+
+.page-card-body {
+  background: white;
+  padding: 18px;
+}
+
+.pg-summary {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--summit);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.pg-issues {
+  list-style: none;
+}
+
+.pg-issues li {
+  font-size: 12.5px;
+  color: #4a5568;
+  padding: 5px 0 5px 18px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  line-height: 1.4;
+}
+
+.pg-issues li::before {
+  content: '✕';
+  position: absolute;
+  left: 0;
+  color: #f87171;
+  font-size: 10px;
+  top: 7px;
+}
+
+.pg-issues li.ok::before {
+  content: '✓';
+  color: var(--pine);
+}
+
+/* ── REDESIGN CONCEPT ── */
+.palette-row {
+  display: flex;
+  gap: 0;
+  margin-bottom: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 80px;
+}
+
+.pal {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 14px;
+}
+
+.pal span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.p1 { background: #0b1e2d; } .p1 span { color: rgba(255,255,255,0.4); }
+.p2 { background: #0b2f45; } .p2 span { color: rgba(255,255,255,0.5); }
+.p3 { background: #3a7fa8; } .p3 span { color: rgba(255,255,255,0.8); }
+.p4 { background: #c4401a; } .p4 span { color: rgba(255,255,255,0.9); }
+.p5 { background: #b8892a; } .p5 span { color: rgba(255,255,255,0.9); }
+.p6 { background: #faf8f4; border: 1px solid #e2ddd5; } .p6 span { color: #999; }
+
+.concept-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.concept-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 22px;
+  border-top: 3px solid var(--ice);
+}
+
+.concept-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--glacier);
+  margin-bottom: 8px;
+}
+
+.concept-card p {
+  font-size: 13px;
+  color: #4a5568;
+  line-height: 1.65;
+}
+
+/* ── ROADMAP ── */
+.roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.rphase { border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); }
+
+.rphase-head {
+  padding: 18px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: white;
+}
+
+.ph1 .rphase-head { background: var(--summit); }
+.ph2 .rphase-head { background: var(--glacier); }
+.ph3 .rphase-head { background: var(--pine); }
+
+.rphase-sub {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 2px;
+}
+
+.rphase-body {
+  background: white;
+  padding: 18px 22px;
+}
+
+.ritem {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #4a5568;
+  line-height: 1.4;
+}
+
+.ritem::before { content: '→'; color: var(--summit); flex-shrink: 0; }
+.ph2 .ritem::before { color: var(--ice); }
+.ph3 .ritem::before { color: var(--pine); }
+
+/* ── BOTTOM LINE ── */
+.bottom-line {
+  background: var(--glacier);
+  padding: 88px 80px;
+  text-align: center;
+}
+
+.bottom-line .inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.bottom-line-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.bottom-line-label::before,
+.bottom-line-label::after {
+  content: '';
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: var(--ice);
+  opacity: 0.4;
+}
+
+.bottom-line h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  color: white;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.bottom-line h2 em { font-style: italic; color: rgba(255,255,255,0.45); }
+
+.bottom-line p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.cta-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  background: var(--summit);
+  color: white;
+  padding: 16px 40px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.cta-primary:hover { background: #a8361a; transform: translateY(-1px); }
+
+.cta-secondary {
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  text-decoration: none;
+}
+
+.footer-sig {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .cover-content, .toc, .section, .section-full, .scorecard-bg, .bottom-line { padding-left: 32px; padding-right: 32px; }
+  .toc-grid, .score-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-strip, .page-grade-grid, .concept-cards, .roadmap { grid-template-columns: 1fr 1fr; }
+  .calendar-box { grid-template-columns: 1fr; }
+  .calendar-icon { display: none; }
+}
+
+@media (max-width: 600px) {
+  .cover-content { padding: 40px 24px; }
+  .toc, .section, .section-full, .scorecard-bg, .bottom-line { padding-left: 24px; padding-right: 24px; }
+  .toc-grid, .score-grid, .stat-strip, .page-grade-grid, .concept-cards, .roadmap { grid-template-columns: 1fr; }
+  .cover-meta-bar { flex-direction: column; gap: 16px; }
+  .cover-grade-badge { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ COVER ══════════════════ -->
+<div class="cover">
+  <div class="cover-mountain"></div>
+  <div class="cover-content">
+    <p class="cover-eyebrow">Website Audit Report · Confidential</p>
+    <h1 class="cover-title">Northwest<br><em>Mountain</em><br>School</h1>
+    <p class="cover-subtitle">mountainschool.com · Full Digital Presence Analysis · April 2026</p>
+    <div class="cover-meta-bar">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Website</div>
+        <div class="cover-meta-value">mountainschool.com</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Est.</div>
+        <div class="cover-meta-value">1994 — 32 Years</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Site Built</div>
+        <div class="cover-meta-value">Rebuilt 2008</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">Priority</div>
+        <div class="cover-meta-value">Full Rebuild</div>
+      </div>
+      <div class="cover-grade-badge">
+        <span class="cover-grade-letter">D</span>
+        <span class="cover-grade-score">31/100</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ TOC ══════════════════ -->
+<div class="toc">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+    <a href="#exec" class="toc-item"><span class="toc-num">01</span><span class="toc-text">Executive Summary</span></a>
+    <a href="#scorecard" class="toc-item"><span class="toc-num">02</span><span class="toc-text">Performance Scorecard</span></a>
+    <a href="#technical" class="toc-item"><span class="toc-num">03</span><span class="toc-text">Technical Audit</span></a>
+    <a href="#calendar" class="toc-item"><span class="toc-num">04</span><span class="toc-text">Calendar System Analysis</span></a>
+    <a href="#design" class="toc-item"><span class="toc-num">05</span><span class="toc-text">Visual Design & Brand</span></a>
+    <a href="#navigation" class="toc-item"><span class="toc-num">06</span><span class="toc-text">Navigation & UX</span></a>
+    <a href="#conversion" class="toc-item"><span class="toc-num">07</span><span class="toc-text">Conversion Audit</span></a>
+    <a href="#pages" class="toc-item"><span class="toc-num">08</span><span class="toc-text">Page-by-Page Grades</span></a>
+    <a href="#concept" class="toc-item"><span class="toc-num">09</span><span class="toc-text">Redesign Direction</span></a>
+    <a href="#roadmap" class="toc-item"><span class="toc-num">10</span><span class="toc-text">Implementation Roadmap</span></a>
+  </div>
+</div>
+
+<!-- ══════════════════ 01 EXEC SUMMARY ══════════════════ -->
+<section class="section" id="exec">
+  <p class="section-number">01</p>
+  <h2 class="section-title">Executive Summary</h2>
+  <p class="section-tagline">The most credentialed guide service in the Pacific Northwest — running on a 24-year-old website.</p>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <div class="stat-num red">0</div>
+      <div class="stat-label">Booking CTAs on Homepage</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num green">64</div>
+      <div class="stat-label">Combined Guiding Years</div>
+    </div>
+    <div class="stat-cell dark">
+      <div class="stat-num" style="color:white">2008</div>
+      <div class="stat-label">Year of Last Rebuild</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num red">0</div>
+      <div class="stat-label">Testimonials on Homepage</div>
+    </div>
+  </div>
+
+  <div class="issue crit">
+    <span class="issue-pill">⚠ Critical Finding</span>
+    <div class="issue-title">Your Credentials Deserve a Website That Keeps Up.</div>
+    <div class="issue-body">Between the two of you, you hold the IFMGA/UIAGM certification — the highest guiding credential on Earth. John, you were the 30th American to achieve it. Olivia, you were the 3rd American woman. You have 64 combined years of guiding, 168 Rainier summits, Everest, Cho Oyu, Denali, Antarctica, and the Matterhorn between you. Patagonia and Petzl sponsor you. Your schedule fills 70% a year in advance — on reputation alone.<br><br>Irongaze did good work in 2008. A self-editable CMS, a custom calendar, online registration, integrated payments — that was genuinely ahead of its time, and I want to acknowledge that clearly. What I am about to say is not a criticism of that work. It is simply a question of time: the web has moved 17 years forward since then. The layout uses HTML tables — a technique the industry left behind around 2008. The site does not work on a smartphone. Your calendar, which shows all your trip dates, is currently blocked from Google. And a visitor landing on your homepage for the first time has no idea who you are, what you have climbed, or why they should trust you with their life on a mountain. That is the gap this audit addresses.</div>
+  </div>
+
+  <div class="issue good">
+    <span class="issue-pill">✦ Major Opportunity</span>
+    <div class="issue-title">24 Years of SEO Authority — An Asset Worth Protecting</div>
+    <div class="issue-body">mountainschool.com has been continuously live since 1994. This generates enormous domain authority, thousands of quality backlinks, and rankings for competitive mountaineering keywords that newer competitors cannot buy. A rebuild that preserves all existing URLs with proper 301 redirects will transfer this authority entirely — and with modern on-page SEO, could dramatically increase rankings. This SEO equity is the single most valuable technical asset on the site and must be protected at all costs during any rebuild.</div>
+    <div class="issue-fix"><strong>Action:</strong> Before any rebuild, conduct a complete URL audit. Every existing page URL must be mapped and redirected. No URL should return a 404 after launch.</div>
+  </div>
+</section>
+
+<!-- ══════════════════ 02 SCORECARD ══════════════════ -->
+<div class="scorecard-bg" id="scorecard">
+  <div class="inner">
+    <p class="section-number">02</p>
+    <h2 class="section-title">Performance Scorecard</h2>
+    <p class="section-tagline">10 categories evaluated against modern industry standards for adventure tourism websites.</p>
+
+    <div class="score-header">
+      <div>
+        <p style="font-size:13px;color:var(--mid);">Overall score reflects the average of 10 weighted categories.<br>Industry benchmark for adventure guiding sites: 65+</p>
+      </div>
+      <div class="overall-display">
+        <div class="grade-ring">
+          <span class="letter">D</span>
+          <span class="score">31/100</span>
+        </div>
+        <div class="overall-text">
+          <h3>Overall Grade</h3>
+          <p>Full Rebuild Required<br>Industry avg: 65/100</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="score-grid">
+      <div class="score-card red">
+        <div class="score-card-label">Visual Design</div>
+        <div class="score-bar-track"><div class="score-bar-fill red" style="width:12%"></div></div>
+        <div class="score-val">12 / 100</div>
+      </div>
+      <div class="score-card red">
+        <div class="score-card-label">UX / Navigation</div>
+        <div class="score-bar-track"><div class="score-bar-fill red" style="width:20%"></div></div>
+        <div class="score-val">20 / 100</div>
+      </div>
+      <div class="score-card red">
+        <div class="score-card-label">Conversion</div>
+        <div class="score-bar-track"><div class="score-bar-fill red" style="width:10%"></div></div>
+        <div class="score-val">10 / 100</div>
+      </div>
+      <div class="score-card red">
+        <div class="score-card-label">Mobile Experience</div>
+        <div class="score-bar-track"><div class="score-bar-fill red" style="width:8%"></div></div>
+        <div class="score-val">8 / 100</div>
+      </div>
+      <div class="score-card red">
+        <div class="score-card-label">Brand Identity</div>
+        <div class="score-bar-track"><div class="score-bar-fill red" style="width:10%"></div></div>
+        <div class="score-val">10 / 100</div>
+      </div>
+      <div class="score-card amber">
+        <div class="score-card-label">Page Speed</div>
+        <div class="score-bar-track"><div class="score-bar-fill amber" style="width:42%"></div></div>
+        <div class="score-val">42 / 100</div>
+      </div>
+      <div class="score-card amber">
+        <div class="score-card-label">SEO Foundation</div>
+        <div class="score-bar-track"><div class="score-bar-fill amber" style="width:38%"></div></div>
+        <div class="score-val">38 / 100</div>
+      </div>
+      <div class="score-card amber">
+        <div class="score-card-label">Trust & Social Proof</div>
+        <div class="score-bar-track"><div class="score-bar-fill amber" style="width:22%"></div></div>
+        <div class="score-val">22 / 100</div>
+      </div>
+      <div class="score-card green">
+        <div class="score-card-label">Content Quality</div>
+        <div class="score-bar-track"><div class="score-bar-fill green" style="width:65%"></div></div>
+        <div class="score-val">65 / 100</div>
+      </div>
+      <div class="score-card amber">
+        <div class="score-card-label">Accessibility</div>
+        <div class="score-bar-track"><div class="score-bar-fill amber" style="width:25%"></div></div>
+        <div class="score-val">25 / 100</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ 03 TECHNICAL ══════════════════ -->
+<section class="section" id="technical">
+  <p class="section-number">03</p>
+  <h2 class="section-title">Technical Audit</h2>
+  <p class="section-tagline">Under the hood — a 24-year-old architecture meeting 2026 web standards.</p>
+
+  <table class="tech-table">
+    <thead>
+      <tr>
+        <th>Technical Factor</th>
+        <th>Current State</th>
+        <th>Standard</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Layout Technology</strong></td><td>HTML table-based layout (1990s technique)</td><td>CSS Grid / Flexbox</td><td><span class="tag tag-fail">Critical</span></td></tr>
+      <tr><td><strong>Mobile Responsiveness</strong></td><td>Not responsive — desktop-only table layout</td><td>Mobile-first responsive</td><td><span class="tag tag-fail">Critical</span></td></tr>
+      <tr><td><strong>Logo Format</strong></td><td>.gif file — blurry on all retina displays</td><td>SVG vector</td><td><span class="tag tag-fail">Critical</span></td></tr>
+      <tr><td><strong>Image Formats</strong></td><td>JPEG only — no WebP, no AVIF</td><td>WebP/AVIF with fallback</td><td><span class="tag tag-fail">Critical</span></td></tr>
+      <tr><td><strong>Image Optimization</strong></td><td>No lazy loading, no srcset, no CDN delivery</td><td>Lazy load + responsive srcset + CDN</td><td><span class="tag tag-fail">Critical</span></td></tr>
+      <tr><td><strong>Viewport Meta Tag</strong></td><td>Not confirmed present</td><td>Required for mobile rendering</td><td><span class="tag tag-warn">Warning</span></td></tr>
+      <tr><td><strong>HTTPS / SSL</strong></td><td>✓ HTTPS enabled</td><td>HTTPS required</td><td><span class="tag tag-pass">Pass</span></td></tr>
+      <tr><td><strong>Schema.org Markup</strong></td><td>None detected — no TouristTrip, Event, Person, LocalBusiness</td><td>Full schema on all trip pages</td><td><span class="tag tag-fail">Critical</span></td></tr>
+      <tr><td><strong>Open Graph / Social Tags</strong></td><td>Not detected</td><td>OG tags on all pages</td><td><span class="tag tag-fail">Critical</span></td></tr>
+      <tr><td><strong>XML Sitemap</strong></td><td>Not confirmed</td><td>Sitemap submitted to GSC</td><td><span class="tag tag-warn">Warning</span></td></tr>
+      <tr><td><strong>Robots.txt</strong></td><td>Present — calendar directory blocked from crawlers</td><td>Only block private admin paths</td><td><span class="tag tag-warn">Warning</span></td></tr>
+      <tr><td><strong>Page Speed (Mobile)</strong></td><td>Estimated 35–45 / 100 (table layout + unoptimised images)</td><td>90+ / 100</td><td><span class="tag tag-fail">Critical</span></td></tr>
+      <tr><td><strong>LCP (Largest Contentful Paint)</strong></td><td>Est. 4–7 seconds (large unoptimised hero JPEG)</td><td>Under 2.5s</td><td><span class="tag tag-fail">Critical</span></td></tr>
+      <tr><td><strong>CMS Platform</strong></td><td>Irongaze Framework (proprietary, custom-built 2008) — 17 years old, no path to modern web standards</td><td>Modern maintained platform or headless CMS</td><td><span class="tag tag-warn">Warning</span></td></tr>
+      <tr><td><strong>Content Updates</strong></td><td>Self-editable via Irongaze CMS — John & Olivia can update content directly</td><td>Self-editable CMS</td><td><span class="tag tag-pass">Pass</span></td></tr>
+      <tr><td><strong>Canonical Tags</strong></td><td>Not confirmed — potential duplicate content risk</td><td>Canonical on all pages</td><td><span class="tag tag-warn">Warning</span></td></tr>
+      <tr><td><strong>Analytics</strong></td><td>Unknown — no visible tracking code in fetched HTML</td><td>GA4 + GSC connected</td><td><span class="tag tag-warn">Warning</span></td></tr>
+      <tr><td><strong>Domain Authority</strong></td><td>High — 24 years of continuous operation</td><td>Preserve at all costs during rebuild</td><td><span class="tag tag-pass">Asset</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="issue crit">
+    <span class="issue-pill">Critical</span>
+    <div class="issue-title">The CMS Is a 17-Year-Old Proprietary Framework</div>
+    <div class="issue-body">Your site runs on the "Irongaze Framework" — a custom CMS built specifically for NMS in 2008. It was genuinely ahead of its time: you can edit content yourselves, the calendar module is custom-built for your workflow, you have an online registration system, and payments are integrated. That infrastructure still works.<br><br>The challenge is not capability — it is age. The Irongaze Framework is 17 years old. It predates smartphones, responsive design, WebP images, Core Web Vitals, and modern booking integrations. It cannot be extended to support these without rebuilding from scratch. The proprietary architecture also means only Irongaze can work on it — there is no open ecosystem of developers who can maintain or enhance it. What was innovative in 2008 is now a ceiling on what the site can become.</div>
+    <div class="issue-fix"><strong>Fix:</strong> Rebuild on Next.js with a headless CMS (Sanity or Contentful). You retain full self-editing capability — exactly as you have now — but gain a modern, open platform that any developer can maintain, extend, and improve. The transition preserves everything that currently works and removes the ceiling it creates.</div>
+  </div>
+
+  <div class="issue warn">
+    <span class="issue-pill">Warning</span>
+    <div class="issue-title">Calendar Directory Is Blocked by robots.txt</div>
+    <div class="issue-body">The calendar section at /calendar/nms-schedule is blocked from search engine crawling by the site's robots.txt file. This means Google cannot index the trip schedule pages — a significant missed SEO opportunity. Users searching for "Mt. Baker guided climb June 2026" or "AIARE Level 1 course Washington" would not find the calendar, even if it contains exactly that information.</div>
+    <div class="issue-fix"><strong>Fix:</strong> Remove the /calendar/ path from robots.txt disallow rules. The calendar is a custom Irongaze module — its separate URL structure (/calendar/ vs /content/main/) is by design, not a technical problem. The problem is solely the robots.txt block. Removing that single line immediately makes all trip dates indexable by Google. Add Schema.org Event markup to every dated program listing for rich snippet eligibility.</div>
+  </div>
+</section>
+
+<!-- ══════════════════ 04 CALENDAR ══════════════════ -->
+<section class="section" id="calendar">
+  <p class="section-number">04</p>
+  <h2 class="section-title">Calendar System Analysis</h2>
+  <p class="section-tagline">The trip schedule — the most important booking tool on the site — is effectively invisible.</p>
+
+  <div class="calendar-box">
+    <div class="calendar-icon">📅</div>
+    <div class="calendar-content">
+      <h3>Your Calendar — What It Is and What's Wrong</h3>
+      <p>The Calendar nav item links to <code style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:3px;">/calendar/nms-schedule</code> — a custom module Irongaze built specifically for NMS in 2008, which is why it has a different URL structure from the rest of the site. This was innovative when built. It lets you publish trip dates that potential clients can view. The critical problem: this page is actively blocked from search engine crawling by your site's robots.txt file, making all your trip dates completely invisible to Google.</p>
+      <div class="calendar-findings">
+        <div class="cal-finding">The calendar URL pattern (<code>/calendar/</code>) differs from all other page URLs — indicating a separate, possibly embedded system</div>
+        <div class="cal-finding">Blocked by robots.txt — Google cannot index any trip dates, meaning no organic search traffic from date-specific queries</div>
+        <div class="cal-finding">No integration with booking — users can see dates but cannot reserve or pay directly from the calendar</div>
+        <div class="cal-finding">No availability indicators — no way to see how many spots remain on any given trip</div>
+        <div class="cal-finding">Not linked from individual trip pages — a user reading about the Denali climb has no direct path to see upcoming Denali dates</div>
+        <div class="cal-finding">No mobile-optimised calendar interface — table-based layout breaks on phones</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="issue crit">
+    <span class="issue-pill">Critical</span>
+    <div class="issue-title">The Calendar Is Invisible to Google — and Disconnected from Booking</div>
+    <div class="issue-body">A prospective client searching for "guided Mt. Rainier climb August 2026" or "backcountry ski course Washington winter 2027" would never find NMS's calendar — it is hidden from Google. Even if they land on the site through other means, the calendar is siloed: it shows dates but offers no path to reserve a spot. The user must navigate away, find the Registration page, read instructions, then email or call. Every step loses a percentage of potential clients.</div>
+    <div class="issue-fix"><strong>Fix:</strong> Replace with FareHarbor or Peek Pro — both are built specifically for adventure guiding companies. These integrate with the website, show real availability, allow online reservations and deposits, and generate Schema.org Event markup automatically. Every dated program should be bookable in under 3 clicks.</div>
+  </div>
+
+  <div class="issue info">
+    <span class="issue-pill">Context</span>
+    <div class="issue-title">How Competitors Handle Booking</div>
+    <div class="issue-body">Leading US guide services — Alpine Ascents International, International Mountain Guides, American Alpine Institute — all use FareHarbor or RezDy for integrated online booking. Clients can see available dates, remaining spots, and complete a deposit in one session. NMS's current phone/email-only booking model works because of their strong word-of-mouth reputation and 70% advance bookings — but it creates an invisible ceiling on new client acquisition from web discovery.</div>
+    <div class="issue-fix"><strong>Recommendation:</strong> Implement FareHarbor ($0 setup, commission-based model) as the primary booking layer. Integrate availability widgets directly on each trip page and the calendar page. Remove robots.txt block on the /calendar/ path.</div>
+  </div>
+</section>
+
+<!-- ══════════════════ 05 VISUAL DESIGN ══════════════════ -->
+<section class="section" id="design">
+  <p class="section-number">05</p>
+  <h2 class="section-title">Visual Design & Brand</h2>
+  <p class="section-tagline">Patagonia-sponsored guides. A .gif logo. The contrast is stunning.</p>
+
+  <div class="issue crit">
+    <span class="issue-pill">Critical</span>
+    <div class="issue-title">The Logo Is a .GIF File from 1989's Format Standard</div>
+    <div class="issue-body">/images/logo.gif — this file format was introduced in 1989. On any modern display (which means virtually every laptop, phone, and monitor sold in the last decade), this logo appears pixelated and blurry. For a guide service charging $5,000–$15,000 for international expeditions and wearing Patagonia sponsorship, this is the first impression. It signals: we have not updated this website since the early 2000s.</div>
+    <div class="issue-fix"><strong>Fix:</strong> Redesign the logo as an SVG file — infinitely scalable, zero quality loss at any size. Design direction: a clean geometric mountain mark paired with a serif or condensed wordmark. The identity should feel like it belongs on the spine of an IFMGA certification document.</div>
+  </div>
+
+  <div class="issue crit">
+    <span class="issue-pill">Critical</span>
+    <div class="issue-title">No Brand System — No Color Palette, No Typography, No Visual Identity</div>
+    <div class="issue-body">There is no defined color palette, no typographic hierarchy, no visual grid, and no consistent design language across the site. The site uses default browser link colors (blue underlines), generic system fonts at a single weight, and a layout that has not been intentionally designed. The Patagonia and Petzl logos in the footer are better designed than anything on the NMS site itself.</div>
+    <div class="issue-fix"><strong>Fix:</strong> Establish a complete brand system. Proposed direction: deep glacier navy as primary (conveys authority, altitude, trust), ember orange as action color (warmth, energy, urgency), parchment white as background (expedition journal feel). Typography: Playfair Display for editorial headlines (prestige, depth), Outfit for body (clean, readable). Every page should feel like a premium mountain guide manual.</div>
+  </div>
+
+  <div class="issue crit">
+    <span class="issue-pill">Critical</span>
+    <div class="issue-title">Homepage Has No Visual Hierarchy or Hero</div>
+    <div class="issue-body">The homepage opens with a single static mountain JPEG served within a narrow content column. There is no headline, no tagline, no subheadline, no CTA, and no visual hierarchy. A first-time visitor has no orientation: who are you, what do you offer, why should I trust you, what should I do next? All of these questions go unanswered in the first 5 seconds — which is how long most visitors decide whether to stay or leave.</div>
+    <div class="issue-fix"><strong>Fix:</strong> Full-viewport cinematic hero with: a bold headline ("America's Most Certified Mountain Guides"), a one-sentence value proposition, IFMGA/AMGA certification badges, and two CTAs ("Explore Expeditions" primary, "Meet John & Olivia" secondary). The hero image should span 100% of the viewport and communicate the scale and beauty of what NMS offers.</div>
+  </div>
+
+  <div class="issue warn">
+    <span class="issue-pill">Warning</span>
+    <div class="issue-title">Photography Is the #1 Sales Asset — and Is Criminally Underused</div>
+    <div class="issue-body">NMS has genuine expedition photography from Denali, the Cascades, the Alps, and beyond. The current site displays this photography as small constrained thumbnails inside a narrow content column, surrounded by navigation chrome and white space. Adventure travel is a visual purchase. Clients book when they feel the mountain calling them. The photography that should be doing that work is being served at the equivalent of passport photo size.</div>
+    <div class="issue-fix"><strong>Fix:</strong> Full-bleed, edge-to-edge photography on every key page. Hero images that dominate the viewport. Parallax scroll effects on section transitions. Large-format photo galleries on trip pages with lightbox viewing. The photography is the most powerful conversion tool available — treat it that way.</div>
+  </div>
+</section>
+
+<!-- ══════════════════ 06 NAVIGATION ══════════════════ -->
+<section class="section" id="navigation">
+  <p class="section-number">06</p>
+  <h2 class="section-title">Navigation & UX</h2>
+  <p class="section-tagline">Finding a trip requires navigating a 5-level dropdown built for desktop browsers circa 2008.</p>
+
+  <div class="flow-steps">
+    <div class="flow-step broken">
+      <div class="flow-num">01</div>
+      <div class="flow-title">Land on Homepage</div>
+      <div class="flow-desc">Static image. No CTA. No headline. No clear next step.</div>
+    </div>
+    <div class="flow-step broken">
+      <div class="flow-num">02</div>
+      <div class="flow-title">Hover Over Climbing</div>
+      <div class="flow-desc">5-level dropdown appears instantly. Alpine → Mountaineering Courses → individual courses. Overwhelming.</div>
+    </div>
+    <div class="flow-step broken">
+      <div class="flow-num">03</div>
+      <div class="flow-title">Find Trip Page</div>
+      <div class="flow-desc">Wall of text. No price visible above fold. No guide photo. No booking CTA.</div>
+    </div>
+    <div class="flow-step broken">
+      <div class="flow-num">04</div>
+      <div class="flow-title">Look for Dates</div>
+      <div class="flow-desc">Must navigate to separate Calendar section. No link from trip page. Calendar blocked from Google.</div>
+    </div>
+    <div class="flow-step broken">
+      <div class="flow-num">05</div>
+      <div class="flow-title">Try to Register</div>
+      <div class="flow-desc">Separate "Register" nav item. Reads instructions. Must email or call. No online payment.</div>
+    </div>
+  </div>
+
+  <div class="issue crit">
+    <span class="issue-pill">Critical</span>
+    <div class="issue-title">5-Level Navigation Hierarchy — Unusable on Mobile</div>
+    <div class="issue-body">The main navigation has 7 top-level items, each expanding into 5–8 sub-items, some with further sub-sub-items. The Climbing section alone: Climbing → Alpine → Mountaineering Courses → 5-Day Mountaineering Course. That is 4 levels deep for a single trip. On mobile, this collapses to a hamburger menu requiring multiple taps and providing no visual hierarchy. There are 50+ trip pages with no filter, sort, or search system to help users narrow down what they want.</div>
+    <div class="issue-fix"><strong>Fix:</strong> Flatten to 4 top-level items: Trips, Courses, About, Contact/Book. Add a smart filter on the Trips index: filter by Activity (Ski / Climb / Rock / Expedition), Difficulty, Season, Duration. Every trip findable in 2 clicks maximum. Add a persistent search bar.</div>
+  </div>
+
+  <div class="issue crit">
+    <span class="issue-pill">Critical</span>
+    <div class="issue-title">Trip Pages Have No Booking Infrastructure</div>
+    <div class="issue-body">Every trip page — Denali, Matterhorn, Haute Route — has excellent content but zero conversion architecture. There is no price visible in the first screen, no sticky CTA as the user scrolls, no date selector, no availability indicator, no guide profile showing who leads this specific trip. The registration process requires leaving the page, finding the Register nav item, reading text instructions, then emailing or calling. This multi-step friction eliminates impulsive or international bookings entirely.</div>
+    <div class="issue-fix"><strong>Fix:</strong> Add a sticky booking sidebar to all trip pages: Price prominently at top, upcoming available dates, spots remaining, "Reserve Your Spot" primary CTA, "Ask a Question" secondary. This sidebar follows the user as they scroll through the itinerary — the booking opportunity never disappears from view.</div>
+  </div>
+
+  <div class="issue warn">
+    <span class="issue-pill">Warning</span>
+    <div class="issue-title">"2021 Set Date Programs" Is Still Live in Resources</div>
+    <div class="issue-body">The Resources navigation section contains a link to "2021 Set Date Programs" — a page that is 4 years out of date. This signals to any visitor that the site is not actively maintained. It also creates potential confusion when clients check for current program availability. Small detail, large impression damage.</div>
+    <div class="issue-fix"><strong>Immediate fix:</strong> Remove this link from the navigation today. It can be done without a full rebuild.</div>
+  </div>
+</section>
+
+<!-- ══════════════════ 07 CONVERSION ══════════════════ -->
+<section class="section" id="conversion">
+  <p class="section-number">07</p>
+  <h2 class="section-title">Conversion Audit</h2>
+  <p class="section-tagline">Every conversion element that modern booking sites use — NMS has none of them.</p>
+
+  <table class="tech-table" style="margin-bottom:28px">
+    <thead>
+      <tr>
+        <th>Conversion Element</th>
+        <th>Current State</th>
+        <th>Industry Standard</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Hero CTA</strong></td><td>None — static image with no text</td><td>2 CTAs, bold headline, social proof snippet</td><td><span class="tag tag-fail">Missing</span></td></tr>
+      <tr><td><strong>Price Visibility</strong></td><td>Buried in trip page body text</td><td>Prominent on cards & booking widget</td><td><span class="tag tag-fail">Missing</span></td></tr>
+      <tr><td><strong>Online Registration</strong></td><td>Custom Irongaze registration system exists — but no real-time availability, no deposit flow, no mobile-optimised booking</td><td>Integrated calendar + online deposit + availability</td><td><span class="tag tag-warn">Partial</span></td></tr>
+      <tr><td><strong>IFMGA Certification Display</strong></td><td>Logos in footer only</td><td>Prominently near hero & CTAs</td><td><span class="tag tag-warn">Weak</span></td></tr>
+      <tr><td><strong>Testimonials on Homepage</strong></td><td>Zero — exist on buried sub-page only</td><td>3–5 prominent quotes + client photos</td><td><span class="tag tag-fail">Missing</span></td></tr>
+      <tr><td><strong>Guide Profiles on Trip Pages</strong></td><td>Not present — staff page only</td><td>Photo + bio + credentials on every trip</td><td><span class="tag tag-fail">Missing</span></td></tr>
+      <tr><td><strong>Scarcity / Urgency</strong></td><td>None anywhere on site</td><td>"3 spots left" / trip filling fast</td><td><span class="tag tag-fail">Missing</span></td></tr>
+      <tr><td><strong>Email List Capture</strong></td><td>External ConstantContact link (leaves site)</td><td>Inline form with lead magnet</td><td><span class="tag tag-warn">Poor</span></td></tr>
+      <tr><td><strong>Trip Card Design</strong></td><td>Text links — no visual cards</td><td>Photo + title + price + duration + CTA</td><td><span class="tag tag-fail">Missing</span></td></tr>
+      <tr><td><strong>Social Media Integration</strong></td><td>None</td><td>Instagram feed, Google Reviews widget</td><td><span class="tag tag-fail">Missing</span></td></tr>
+      <tr><td><strong>Related Trips</strong></td><td>None on trip pages</td><td>"You may also like" section</td><td><span class="tag tag-fail">Missing</span></td></tr>
+      <tr><td><strong>Mobile Booking Flow</strong></td><td>Completely broken on mobile</td><td>Mobile-first, thumb-friendly</td><td><span class="tag tag-fail">Missing</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="issue good">
+    <span class="issue-pill">✦ Strength to Preserve</span>
+    <div class="issue-title">Trip Content Depth Is a Genuine Competitive Advantage</div>
+    <div class="issue-body">Individual trip pages — Denali, Haute Route, Matterhorn — contain genuinely expert content: day-by-day itineraries, comprehensive gear lists, physical conditioning requirements, acclimatisation protocols, and honest difficulty assessments written by people who have done these routes hundreds of times. This content depth is rare among competitors and is exactly what serious mountaineers need to make a booking decision. It also provides strong long-tail SEO value. The rebuild must preserve and enhance this content — not trim it.</div>
+    <div class="issue-fix"><strong>Enhancement:</strong> Present this content in tabbed sections (Overview / Itinerary / Gear / FAQ), with expandable equipment lists, visual itinerary timelines, and embedded route maps. The content is excellent — the presentation just needs modernising.</div>
+  </div>
+</section>
+
+<!-- ══════════════════ 08 PAGE GRADES ══════════════════ -->
+<section class="section" id="pages">
+  <p class="section-number">08</p>
+  <h2 class="section-title">Page-by-Page Analysis</h2>
+  <p class="section-tagline">Detailed scoring on the six most critical pages.</p>
+
+  <div class="page-grade-grid">
+    <div class="page-card">
+      <div class="page-card-head">
+        <span class="page-card-url">mountainschool.com/</span>
+        <span class="pg-badge pg-f">F</span>
+      </div>
+      <div class="page-card-body">
+        <div class="pg-summary">Homepage — Zero conversion architecture</div>
+        <ul class="pg-issues">
+          <li>Static JPEG hero — no headline, no CTA, no value proposition</li>
+          <li>Pixelated .gif logo visible on all modern screens</li>
+          <li>No featured trip cards — just navigation text links</li>
+          <li>Zero testimonials or social proof anywhere on page</li>
+          <li>IFMGA/AMGA credentials mentioned only in footer</li>
+          <li>Table layout completely breaks on mobile screens</li>
+          <li>ConstantContact email link takes users off-site</li>
+          <li class="ok">Sponsor logos (Patagonia, Petzl, La Sportiva) present</li>
+          <li class="ok">News/updates section shows active programs (2026, 2027)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-card">
+      <div class="page-card-head">
+        <span class="page-card-url">/content/main/about-us/</span>
+        <span class="pg-badge pg-c">B-</span>
+      </div>
+      <div class="page-card-body">
+        <div class="pg-summary">About — Best page on the site, still underperforms</div>
+        <ul class="pg-issues">
+          <li class="ok">Detailed personal bios for both of you — compelling reading</li>
+          <li class="ok">"Why So Small?" philosophy section — exceptional differentiator</li>
+          <li class="ok">Guide photos present (small but present)</li>
+          <li class="ok">IFMGA certification context explained well</li>
+          <li>No video — a story this rich deserves a 90-second film</li>
+          <li>No CTAs anywhere on the page — reads like Wikipedia</li>
+          <li>Olivia's historic achievement (3rd US woman, IFMGA) buried in text</li>
+          <li>No stats displayed visually — 168 Rainier summits, 64 years experience</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-card">
+      <div class="page-card-head">
+        <span class="page-card-url">/content/main/denali-west-buttress-climb/</span>
+        <span class="pg-badge pg-d">D+</span>
+      </div>
+      <div class="page-card-body">
+        <div class="pg-summary">Flagship Trip — Great content, terrible UX</div>
+        <ul class="pg-issues">
+          <li class="ok">Excellent day-by-day itinerary — detailed and expert-written</li>
+          <li class="ok">Comprehensive gear and equipment guidance</li>
+          <li>Price not visible anywhere above the fold</li>
+          <li>No sticky booking widget or sidebar</li>
+          <li>No guide profile — who actually leads this trip?</li>
+          <li>No photo gallery — single small hero image for Denali</li>
+          <li>No upcoming dates visible — must navigate to separate Calendar</li>
+          <li>No social proof or past summit success rate displayed</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-card">
+      <div class="page-card-head">
+        <span class="page-card-url">/calendar/nms-schedule</span>
+        <span class="pg-badge pg-f">F</span>
+      </div>
+      <div class="page-card-body">
+        <div class="pg-summary">Calendar — Invisible to Google, disconnected from booking</div>
+        <ul class="pg-issues">
+          <li>Blocked from Google crawling by robots.txt</li>
+          <li>Custom Irongaze module — different URL structure by design, not a bug</li>
+          <li>No booking integration — shows dates but no way to reserve</li>
+          <li>No availability or spots remaining indicators</li>
+          <li>Not linked from individual trip pages</li>
+          <li>Not mobile-optimised</li>
+          <li>Zero Schema.org Event markup for Google rich snippets</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-card">
+      <div class="page-card-head">
+        <span class="page-card-url">/content/main/staff-of-nms/</span>
+        <span class="pg-badge pg-d">D</span>
+      </div>
+      <div class="page-card-body">
+        <div class="pg-summary">Staff — Hidden gold mine, poor presentation</div>
+        <ul class="pg-issues">
+          <li class="ok">Full bios for all 8 guides — genuinely exceptional credentials</li>
+          <li class="ok">IFMGA certification badges displayed</li>
+          <li>Buried under About Us dropdown — hard to discover</li>
+          <li>Guides not linked to their specific trip programs</li>
+          <li>No "Book with [Guide]" path from this page</li>
+          <li>Vertical text list — no visual cards or photos at scale</li>
+          <li>Ian Nicholson's OutdoorGearLab / Climbing Magazine work not leveraged</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-card">
+      <div class="page-card-head">
+        <span class="page-card-url">/content/main/testimonials/</span>
+        <span class="pg-badge pg-f">F</span>
+      </div>
+      <div class="page-card-body">
+        <div class="pg-summary">Testimonials — Completely isolated from the sales funnel</div>
+        <ul class="pg-issues">
+          <li>Lives on a sub-page of Resources — invisible to most visitors</li>
+          <li>Zero testimonials on homepage</li>
+          <li>Zero testimonials on any trip page</li>
+          <li>No photos, no full names, no trip context on testimonials</li>
+          <li>No star rating system or score aggregation</li>
+          <li>No Google Reviews integration or widget</li>
+          <li>No video testimonials</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 09 REDESIGN CONCEPT ══════════════════ -->
+<section class="section" id="concept">
+  <p class="section-number">09</p>
+  <h2 class="section-title">Redesign Direction</h2>
+  <p class="section-tagline">Design concept: "Summit Journal" — Where IFMGA authority meets expedition storytelling.</p>
+
+  <div class="palette-row">
+    <div class="pal p1"><span style="color:rgba(255,255,255,0.4)">Abyss</span></div>
+    <div class="pal p2"><span style="color:rgba(255,255,255,0.5)">Glacier</span></div>
+    <div class="pal p3"><span>Ice Blue</span></div>
+    <div class="pal p4"><span>Summit Ember</span></div>
+    <div class="pal p5"><span>Alpine Gold</span></div>
+    <div class="pal p6"><span style="color:#888">Parchment</span></div>
+  </div>
+
+  <div class="concept-cards">
+    <div class="concept-card">
+      <h4>🎬 Cinematic Homepage Hero</h4>
+      <p>Full-viewport video reel — Denali, Cascades, Alps. Bold Playfair Display headline: <em>"America's Most Certified Mountain Guides."</em> IFMGA badge overlaid. Dual CTAs: "Explore Expeditions" and "Meet John & Olivia." Stats strip below: 64 years / 168 Rainier summits / Est. 1994.</p>
+    </div>
+    <div class="concept-card">
+      <h4>🗂 Smart Trip Index with Filters</h4>
+      <p>Replace 5-level dropdown with a visual trip index. Filter by: Activity (Ski / Rock / Alpine / Expedition), Difficulty (Intro / Intermediate / Expert), Season, Duration. Rich trip cards: photo, title, price from, duration, difficulty badge, guide photo, CTA. Every trip findable in 2 clicks.</p>
+    </div>
+    <div class="concept-card">
+      <h4>📋 Sticky Booking Sidebar</h4>
+      <p>On every trip page: price prominently displayed, upcoming departure dates, spots remaining, "Reserve Your Spot" primary CTA, "Ask John a Question" secondary. Sidebar follows the user as they scroll through the 1,500-word itinerary. Booking opportunity never leaves the screen.</p>
+    </div>
+    <div class="concept-card">
+      <h4>👤 Guide Profiles Everywhere</h4>
+      <p>Photo, name, IFMGA certification, first ascents, years guiding — on the homepage, on every trip page, on the About page. Visitors should know exactly who will be on the rope with them before they book. This is the single highest trust signal available and currently completely absent.</p>
+    </div>
+    <div class="concept-card">
+      <h4>📅 Integrated Live Calendar</h4>
+      <p>FareHarbor or Peek Pro replaces the current blocked calendar. Real-time availability, spots remaining, online deposit capability. Widget embedded directly on trip pages — a user reading about the Haute Route sees the next three departure dates and can reserve in the same session.</p>
+    </div>
+    <div class="concept-card">
+      <h4>🏔 Olivia's Women's Programs Hub</h4>
+      <p>Olivia — 3rd woman in US history to achieve IFMGA certification — leads Women's programs across Rock, Ski, and Alpine. This deserves a dedicated section with her personal story, program philosophy, client testimonials, and its own visual identity. Women's adventure travel is the fastest-growing segment in the industry.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 10 ROADMAP ══════════════════ -->
+<section class="section" id="roadmap">
+  <p class="section-number">10</p>
+  <h2 class="section-title">Implementation Roadmap</h2>
+  <p class="section-tagline">Three phases from immediate wins to full rebuild to growth amplification.</p>
+
+  <div class="roadmap">
+    <div class="rphase ph1">
+      <div class="rphase-head">
+        Phase 1 — Quick Wins
+        <div class="rphase-sub">Week 1–2 · No rebuild needed</div>
+      </div>
+      <div class="rphase-body">
+        <div class="ritem">Remove "2021 Set Date Programs" link from Resources nav — today</div>
+        <div class="ritem">Remove /calendar/ from robots.txt disallow rules</div>
+        <div class="ritem">Add phone number visibly to main navigation bar</div>
+        <div class="ritem">Move 3 testimonials onto homepage</div>
+        <div class="ritem">Add price to top of each major trip page</div>
+        <div class="ritem">Add IFMGA/AMGA badges above the fold on homepage</div>
+        <div class="ritem">Add "Book this trip — contact us" button at top of trip pages</div>
+      </div>
+    </div>
+    <div class="rphase ph2">
+      <div class="rphase-head">
+        Phase 2 — Full Rebuild
+        <div class="rphase-sub">Month 1–3 · Next.js rebuild</div>
+      </div>
+      <div class="rphase-body">
+        <div class="ritem">New brand: SVG logo, color system, typography, grid</div>
+        <div class="ritem">Next.js rebuild — all 301 redirects preserved</div>
+        <div class="ritem">Cinematic homepage with stats strip, trip cards, testimonials</div>
+        <div class="ritem">Smart trip index with filters and rich cards</div>
+        <div class="ritem">Sticky booking sidebar on all trip pages</div>
+        <div class="ritem">Guide profiles linked to each trip program</div>
+        <div class="ritem">FareHarbor / Peek Pro booking integration</div>
+        <div class="ritem">Schema.org markup on all trip and event pages</div>
+        <div class="ritem">Mobile-first responsive design throughout</div>
+        <div class="ritem">Women's Adventures dedicated landing section</div>
+        <div class="ritem">Self-editable CMS — Olivia updates trips without a developer</div>
+      </div>
+    </div>
+    <div class="rphase ph3">
+      <div class="rphase-head">
+        Phase 3 — Growth Layer
+        <div class="rphase-sub">Month 3–6 · Amplification</div>
+      </div>
+      <div class="rphase-body">
+        <div class="ritem">Email capture with gear-guide lead magnets per trip type</div>
+        <div class="ritem">Expedition journal / blog — John's English Lit background is a superpower here</div>
+        <div class="ritem">Video testimonials + expedition recap reels</div>
+        <div class="ritem">Google Reviews widget integration</div>
+        <div class="ritem">Instagram expedition photography feed</div>
+        <div class="ritem">Interactive route maps on alpine trip pages</div>
+        <div class="ritem">Gear recommendation content (affiliate revenue stream)</div>
+        <div class="ritem">Trip waitlist system for sold-out programs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ BOTTOM LINE ══════════════════ -->
+<div class="bottom-line">
+  <div class="inner">
+    <div class="bottom-line-label">Bottom Line</div>
+    <h2>Extraordinary guides.<br><em>Invisible online.</em></h2>
+    <p>Between the two of you, you are among the most accomplished mountain guides in American history. In 2008, Irongaze gave you something genuinely ahead of its time — and it has served you well. But 2008's best is not 2026's competitive. The layout breaks on smartphones. Your trip calendar is invisible to Google. A visitor landing on your homepage for the first time has no idea what you have climbed, who you are, or why they should choose you. A full rebuild preserves everything that currently works — your content, your SEO authority, your registration system — and fixes everything that doesn't. That is what I am proposing.</p>
+    <div class="cta-block">
+      <a class="cta-primary" href="mailto:hello@annapurnastudio.com">Let's Build the New Site →</a>
+      <a class="cta-secondary" href="https://annapurnastudio.com">annapurnastudio.com</a>
+    </div>
+    <div class="footer-sig">
+      <span>Audit prepared April 2026</span>
+      <span>mountainschool.com</span>
+      <span>Annapurna Studio · hello@annapurnastudio.com</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
